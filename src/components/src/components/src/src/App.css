@@ -1,0 +1,26 @@
+.App {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.counter-section {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.counter-section button {
+  padding: 5px 10px;
+}
+
+.actions {
+  margin-top: 10px;
+  gap: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}

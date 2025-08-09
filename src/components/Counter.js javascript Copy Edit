@@ -1,0 +1,51 @@
+import React, { useState } from "react";
+import ListView from "./ListView";
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+  const [list, setList] = useState([]);
+  const [sortOrder, setSortOrder] = useState("asc");
+
+  const increment = () => setCount(count + 1);
+  const decrement = () => {
+    if (count > 0) setCount(count - 1);
+  };
+
+  const addToList = () => {
+    if (count > 0 && !list.includes(count)) {
+      const updatedList = [...list, count];
+      setList(updatedList);
+      setCount(0);
+    }
+  };
+
+  const toggleSort = () => {
+    const newOrder = sortOrder === "asc" ? "desc" : "asc";
+    setSortOrder(newOrder);
+    const sortedList = [...list].sort((a, b) =>
+      newOrder === "asc" ? a - b : b - a
+    );
+    setList(sortedList);
+  };
+
+  const resetList = () => setList([]);
+
+  return (
+    <div className="container">
+      <h1>Counter App</h1>
+      <div className="counter-section">
+        <button onClick={decrement}>-</button>
+        <span>{count}</span>
+        <button onClick={increment}>+</button>
+        <button onClick={addToList}>Add</button>
+      </div>
+      <div className="actions">
+        <button onClick={toggleSort}>Sort ({sortOrder})</button>
+        <button onClick={resetList}>Reset List</button>
+      </div>
+      <ListView list={list} />
+    </div>
+  );
+};
+
+export default Counter;
